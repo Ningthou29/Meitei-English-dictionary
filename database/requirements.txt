@@ -1,0 +1,5 @@
+pdfplumber
+pypdf
+pymongo
+pytesseract
+pandas
