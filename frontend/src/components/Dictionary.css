@@ -107,6 +107,7 @@
 }
 
 .word-card {
+  position: relative;
   background: #F8F4FF;
   padding: 15px 20px;
   border-radius: 10px;
@@ -119,6 +120,10 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(108, 60, 225, 0.15);
   border-color: #6C3CE1;
+}
+
+.word-card:hover .delete-word-btn {
+  opacity: 1;
 }
 
 .word-english {
@@ -140,8 +145,57 @@
   margin-top: 5px;
 }
 
+.delete-word-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: #EF4444;
+}
+
+.delete-word-btn:hover {
+  color: #DC2626;
+}
+
 .empty-state {
   text-align: center;
   padding: 40px;
   color: #6B7280;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6B7280;
+  font-size: 18px;
+}
+
+.error-message {
+  background: #FEE2E2;
+  border: 1px solid #EF4444;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #991B1B;
+}
+
+.error-message button {
+  padding: 6px 16px;
+  background: #EF4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.error-message button:hover {
+  background: #DC2626;
 }

@@ -1,34 +1,77 @@
-import React, { useState } from 'react';
-import { mockHistory } from '../data/mockData';
+import React, { useState, useEffect } from 'react';
+import { getHistory, deleteHistoryEntry, clearHistory } from '../services/api';
 import './History.css';
 
 function History() {
-  const [history, setHistory] = useState(mockHistory);
+  const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const clearHistory = () => {
-    if (window.confirm('Clear all history?')) {
-      setHistory([]);
+  useEffect(() => {
+    loadHistory();
+  }, []);
+
+  const loadHistory = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await getHistory();
+      setHistory(data.history);
+    } catch (err) {
+      setError('Failed to load history. Is the backend running?');
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const deleteEntry = (id) => {
-    setHistory(history.filter(entry => entry.id !== id));
+  const handleClearHistory = async () => {
+    if (window.confirm('Clear all history?')) {
+      try {
+        await clearHistory();
+        await loadHistory();
+      } catch (err) {
+        setError('Failed to clear history.');
+        console.error(err);
+      }
+    }
   };
+
+  const handleDeleteEntry = async (id) => {
+    try {
+      await deleteHistoryEntry(id);
+      await loadHistory();
+    } catch (err) {
+      setError('Failed to delete entry.');
+      console.error(err);
+    }
+  };
+
+  if (loading) {
+    return <div className="loading">Loading history...</div>;
+  }
 
   return (
     <div className="history-container">
       <div className="history-header">
         <h2>📜 Translation History</h2>
         {history.length > 0 && (
-          <button className="clear-btn" onClick={clearHistory}>
-            Clear All
+          <button className="clear-btn" onClick={handleClearHistory}>
+            🗑️ Clear All
           </button>
         )}
       </div>
 
+      {error && (
+        <div className="error-message">
+          ⚠️ {error}
+          <button onClick={loadHistory}>🔄 Retry</button>
+        </div>
+      )}
+
       {history.length === 0 ? (
         <div className="empty-state">
-          <p> No translations yet.</p>
+          <p>📝 No translations yet.</p>
           <p style={{ fontSize: '14px', color: '#9CA3AF' }}>Start exploring the dictionary!</p>
         </div>
       ) : (
@@ -51,9 +94,9 @@ function History() {
               <div className="history-actions">
                 <button 
                   className="delete-btn"
-                  onClick={() => deleteEntry(entry.id)}
+                  onClick={() => handleDeleteEntry(entry.id)}
                 >
-                  Delete
+                  🗑️ Delete
                 </button>
               </div>
               <div className="history-time">

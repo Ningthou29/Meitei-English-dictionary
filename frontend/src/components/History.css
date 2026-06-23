@@ -133,3 +133,35 @@
   font-size: 18px;
   margin: 5px 0;
 }
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6B7280;
+  font-size: 18px;
+}
+
+.error-message {
+  background: #FEE2E2;
+  border: 1px solid #EF4444;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #991B1B;
+}
+
+.error-message button {
+  padding: 6px 16px;
+  background: #EF4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.error-message button:hover {
+  background: #DC2626;
+}
