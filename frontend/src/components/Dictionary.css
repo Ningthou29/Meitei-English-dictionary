@@ -1,0 +1,147 @@
+.dictionary-container {
+  max-width: 100%;
+}
+
+.dictionary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dictionary-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.add-word-btn {
+  padding: 10px 24px;
+  background: #6C3CE1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.add-word-btn:hover {
+  background: #4A2CB5;
+  transform: scale(1.02);
+}
+
+.search-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px 18px;
+  border: 2px solid #E5E7EB;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #6C3CE1;
+}
+
+.word-count {
+  color: #6B7280;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.add-word-form {
+  background: #F8F4FF;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  border: 2px dashed #6C3CE1;
+}
+
+.add-word-form input {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px 15px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.add-word-form input:focus {
+  outline: none;
+  border-color: #6C3CE1;
+}
+
+.add-word-form button {
+  padding: 10px 24px;
+  background: #10B981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-word-form button:hover {
+  background: #059669;
+}
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.word-card {
+  background: #F8F4FF;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #E5E7EB;
+  transition: all 0.3s;
+}
+
+.word-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(108, 60, 225, 0.15);
+  border-color: #6C3CE1;
+}
+
+.word-english {
+  font-weight: 600;
+  color: #1F2937;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.word-roman {
+  color: #3B82F6;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.word-meitei {
+  color: #DC2626;
+  font-size: 28px;
+  margin-top: 5px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #6B7280;
+}
